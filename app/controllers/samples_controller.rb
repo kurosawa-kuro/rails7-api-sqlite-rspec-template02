@@ -1,5 +1,4 @@
 class SamplesController < ApplicationController
-  before_action :set_sample, only: %i[ show update destroy ]
 
   # GET /samples
   def index
@@ -8,34 +7,16 @@ class SamplesController < ApplicationController
     render json: @samples
   end
 
-  # GET /samples/1
-  def show
-    render json: @sample
-  end
 
   # POST /samples
   def create
     @sample = Sample.new(sample_params)
 
     if @sample.save
-      render json: @sample, status: :created, location: @sample
+      render json: @sample, status: :created
     else
       render json: @sample.errors, status: :unprocessable_entity
     end
-  end
-
-  # PATCH/PUT /samples/1
-  def update
-    if @sample.update(sample_params)
-      render json: @sample
-    else
-      render json: @sample.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /samples/1
-  def destroy
-    @sample.destroy
   end
 
   private
