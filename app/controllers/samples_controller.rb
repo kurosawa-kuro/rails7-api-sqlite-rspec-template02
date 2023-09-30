@@ -1,3 +1,4 @@
+# rails_training/rails7-api-sqlite-rspec-template02/app/controllers/samples_controller.rb
 class SamplesController < ApplicationController
 
   # GET /samples

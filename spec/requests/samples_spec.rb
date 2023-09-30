@@ -1,3 +1,4 @@
+# rails_training/rails7-api-sqlite-rspec-template02/spec/requests/samples_spec.rb
 require 'rails_helper'
 
 RSpec.describe "/samples", type: :request do
