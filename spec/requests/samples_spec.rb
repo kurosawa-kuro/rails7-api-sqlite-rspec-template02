@@ -11,10 +11,8 @@ RSpec.describe "/samples", type: :request do
     before { get samples_url, headers: valid_headers, as: :json }
 
     it "renders a successful response" do
-      puts "Status: #{response.status}"
-      puts "Headers: #{response.headers.select { |k, v| ['Content-Type', 'X-Frame-Options'].include? k }}"
-      puts "Body: #{JSON.pretty_generate(JSON.parse(response.body))}"
-      
+      print_response_details
+
       expect(response).to be_successful
       expect(response.parsed_body.first["title"]).to eq(sample.title)
     end
