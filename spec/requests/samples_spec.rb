@@ -12,8 +12,6 @@ RSpec.describe "/samples", type: :request do
     before { get samples_url, headers: valid_headers, as: :json }
 
     it "renders a successful response" do
-      print_response_details
-
       expect(response).to be_successful
       expect(response.parsed_body.first["title"]).to eq(sample.title)
     end
@@ -24,10 +22,12 @@ RSpec.describe "/samples", type: :request do
       before { post samples_url, params: { sample: valid_attributes }, headers: valid_headers, as: :json }
 
       it "creates a new Sample" do
+        print_response_details
         expect(Sample.last.title).to eq("Valid Sample Title")
       end
 
       it "renders a JSON response with the new sample" do
+        
         expect(response).to have_http_status(:created)
         expect(response.content_type).to match(a_string_including("application/json"))
         expect(response.parsed_body["title"]).to eq("Valid Sample Title")
